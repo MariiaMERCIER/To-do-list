@@ -23,13 +23,18 @@ header {
 }
 
 main {
+  margin-top: 100px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-top: 300px;
+  flex-direction: column;
 }
 
+.test {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 input {
   width: 550px;
   height: 65px;
@@ -69,9 +74,11 @@ h1 {
   margin: 15px;
 }
 
-p {
-  color: #5c48d3;
-  font-size: 15px;
+.listTask {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 footer {
@@ -80,6 +87,21 @@ footer {
   margin-top: 100px;
 }
 
-span {
+.bold {
   font-weight: 900;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+}
+
+.tâche {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+span {
+  font-size: 20px;
 }

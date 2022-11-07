@@ -3,18 +3,24 @@ import "./App.css";
 import Logo from "./images/logo.png";
 
 const App = () => {
-  const [task, setTask] = useState([]);
+  const [getTask, setGetTask] = useState([]);
+  const [items, setItems] = useState("");
+  const [isDone, setIsDone] = useState(false);
 
   const handleChange = (event) => {
-    console.log(event.target.value);
-    setTask(event.target.value);
+    // console.log(event.target.value);
+    setItems(event.target.value);
   };
 
   const showTask = (event) => {
-    const newTask = [...task];
-    newTask.push(event.target.value);
-    setTask(newTask);
-    return <p>{newTask}</p>;
+    const newTask = [...getTask];
+    if (items) {
+      newTask.push(items);
+      setGetTask(newTask);
+      setItems("");
+    } else {
+      alert("Entrez le nom de tâche!");
+    }
   };
 
   return (
@@ -25,21 +31,54 @@ const App = () => {
           <h1>Todo List</h1>
         </header>
         <main>
-          <input
-            type="text"
-            name="put"
-            value={task}
-            placeholder="my new task"
-            onChange={handleChange}
-          />
-          <button type="button" onClick={showTask}>
-            Add task
-          </button>
+          <div className="listTask">
+            {getTask.map((items, index) => {
+              return (
+                <div key={index} className="tâche">
+                  <input
+                    key={index}
+                    type="checkbox"
+                    className="checkbox"
+                    onChange={() => {
+                      setIsDone(!isDone);
+                    }}
+                  />
+
+                  <span
+                    key={index}
+                    className="items"
+                    style={{
+                      textDecoration:
+                        isDone[index] === true ? "line-through" : null,
+                    }}
+                  >
+                    {items}
+                  </span>
+                  <span>
+                    <i class="fa-solid fa-trash"></i>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="test">
+            <input
+              type="text"
+              name="put"
+              value={items}
+              placeholder="my new task"
+              onChange={handleChange}
+            />
+            <button type="button" onClick={showTask}>
+              Add task
+            </button>{" "}
+          </div>
         </main>
         <footer>
           <p>
-            Made with <span>React</span>at <span>Le Reacteur</span> by{" "}
-            <span>Mariia MERCIER</span>
+            Made with <span className="bold">React</span>at{" "}
+            <span className="bold">Le Reacteur</span> by{" "}
+            <span className="bold">Mariia MERCIER</span>
           </p>
         </footer>
       </div>
