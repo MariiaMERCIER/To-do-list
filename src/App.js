@@ -36,7 +36,6 @@ const App = () => {
               return (
                 <div key={index} className="tâche">
                   <input
-                    key={index}
                     type="checkbox"
                     className="checkbox"
                     onChange={() => {
@@ -45,17 +44,15 @@ const App = () => {
                   />
 
                   <span
-                    key={index}
                     className="items"
                     style={{
-                      textDecoration:
-                        isDone[index] === true ? "line-through" : null,
+                      textDecoration: isDone === true ? "line-through" : null,
                     }}
                   >
                     {items}
                   </span>
                   <span>
-                    <i class="fa-solid fa-trash"></i>
+                    <i className="fa-solid fa-trash"></i>
                   </span>
                 </div>
               );
